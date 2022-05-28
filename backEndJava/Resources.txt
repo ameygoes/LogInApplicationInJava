@@ -1,2 +1,0 @@
-Java - SQL Connectivity -> https://spring.io/guides/gs/accessing-data-mysql/
-TO Create a New SQL User RUN - CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'password'; in mysql workbench;
