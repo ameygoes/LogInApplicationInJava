@@ -17,16 +17,28 @@ public class BrandBO {
 
     }
     public List<Brand> obtainAllBrand() throws ClassNotFoundException, SQLException{
-        //Fill your code here
-        return null;//To keep template code without errors we have given this dummy return stmt. Change it as per the problem spec
+
+        // CREATE BRAND DAO OBJECT TO CALL FUNCTION WHICH GETS BRAND ADDED TO DB
+        BrandDAO brandDAO = new BrandDAO();
+
+        // CALL TO THE FUNCTION
+        return brandDAO.obtainAllBrand();
     }
 
     public Brand obtainBrandById(Long id) throws ClassNotFoundException, SQLException {
-        //Fill your code here
-        return null;//To keep template code without errors we have given this dummy return stmt. Change it as per the problem spec
+
+        // CREATE BRAND DAO OBJECT TO CALL FUNCTION WHICH GETS BRAND ADDED TO DB
+        BrandDAO brandDAO = new BrandDAO();
+        return brandDAO.obtainBrandById(id);
     }
 
     public void displayBrand() throws ClassNotFoundException, SQLException {
-    	//Fill your code here
+        List<Brand> brandList = obtainAllBrand();
+
+        System.out.format("%-5s %-15s\n","Id","Name");
+        for (Brand brandObject: brandList) {
+
+            System.out.format("%-5s %-15s\n",brandObject.getId(),brandObject.getName());
+        }
     }
 }

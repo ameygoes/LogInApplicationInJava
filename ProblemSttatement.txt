@@ -184,27 +184,6 @@ Method	Description
 User validateLogin(String username,String password)	This method validates the username and password and returns the user object.
 
 
-Sample Input and Output 1
-Welcome to Best Buy Electronix!
-1.Login
-2.Exit
-Choose from the above menu
-1
-Enter Username
-srideviharish
-Enter Password
-srid1
-Invalid username or password
-1.Login
-2.Exit
-Choose from the above menu
-1
-Enter Username
-srideviharish
-Enter Password
-srid
-[Note: Successfully logged in. Please proceed with the next functional requirement.]
-
 -----------------------------------------
 DONE
 _----------------------------------------
@@ -223,6 +202,9 @@ void displayBrand()	This method displays the details of all available brands.
 Display Brand Details using the below format.
 System.out.format("%-5s %-15s\n","Id","Name");
  
+-----------------------------------------
+DONE
+_----------------------------------------
 
 Implement the following method present in the class ProductTypeBO.
 Method	Description

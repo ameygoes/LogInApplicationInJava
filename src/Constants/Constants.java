@@ -26,7 +26,9 @@ public class Constants {
 
      // BRAND TABLE QUERIES
      public static String BRAND_INSERT_BRANDE_DETAILS_SQL = "INSERT INTO %s (%s) VALUES (?);".formatted(BRAND_TABLE,BRAND_COLUMN_NAMES);
-     public static String BRAND_GET_BRANDS_FROM_DB_SQL = "SELECT * FROM %s WHERE name = ?;".formatted(BRAND_TABLE);
+     public static String BRAND_GET_BRANDS_FROM_DB_USING_BRAND_NAME_SQL = "SELECT * FROM %s WHERE name = ?;".formatted(BRAND_TABLE);
+     public static String BRAND_GET_BRANDS_FROM_DB_USING_ID_SQL = "SELECT * FROM %s WHERE id = ?;".formatted(BRAND_TABLE);
+     public static String BRAND_GET_ALL_BRANDS_SQL = "SELECT * FROM %s;".formatted(BRAND_TABLE);
 
 
 
