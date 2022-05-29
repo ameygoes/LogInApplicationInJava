@@ -1,20 +1,33 @@
 package dao;
 
 import model.Role;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import utility.DBConnection;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import utility.DBConnection;
+import static Constants.Constants.ROLE_GET_ROLE_NAME_FROM_ROLE_ID_SQL;
+import static utility.GetPreparedStatement.GetPreparedStatement;
 
 public class RoleDAO {
     public Role obtainRoleById(Integer roleId) throws ClassNotFoundException, SQLException{
         Role role = null;
         Connection connection = DBConnection.getConnection();
-        //Fill your code here
+
+        PreparedStatement rolesPreparedStatement = GetPreparedStatement(connection,ROLE_GET_ROLE_NAME_FROM_ROLE_ID_SQL);
+
+        // PREPARE A STATEMENT TO FETCH ROLE NAME USING ROLE_ID
+        rolesPreparedStatement.setLong(1,roleId);
+
+        // EXECUTE QUERY
+        ResultSet rolesQueryResultSet = rolesPreparedStatement.executeQuery();
+
+        // IF THE ROLE IS PRESENT CREATE A ROLE OBJECT
+        if(rolesQueryResultSet.next()){
+            role = new Role(rolesQueryResultSet.getLong("id"),(rolesQueryResultSet.getString("name")));
+        }
+
         connection.close();
         return role;
     }

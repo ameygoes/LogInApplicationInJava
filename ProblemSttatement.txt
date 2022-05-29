@@ -205,6 +205,9 @@ Enter Password
 srid
 [Note: Successfully logged in. Please proceed with the next functional requirement.]
 
+-----------------------------------------
+DONE
+_----------------------------------------
 
 Functional Requirement2 – Add Brand, Product Type, Product Category, Product
 Add brand, product type, product category and product. This facility should be available for store manager or product lead or sales lead role only.

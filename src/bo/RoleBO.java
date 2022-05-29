@@ -7,8 +7,9 @@ import java.util.List;
 
 public class RoleBO {
     public Role obtainRoleById(Integer roleId) throws ClassNotFoundException, SQLException{
-        //Fill your code here
-        return null;//To keep template code without errors we have given this dummy return stmt. Change it as per the problem spec
+		RoleDAO roleDAO = new RoleDAO();
+		Role role = roleDAO.obtainRoleById(roleId);
+		return role;
     }
     public List<Role> listAllRoles() throws ClassNotFoundException, SQLException {
 		return new RoleDAO().listAllRoles();

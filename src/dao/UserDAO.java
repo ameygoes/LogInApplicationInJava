@@ -19,30 +19,32 @@ import static utility.GetPreparedStatement.GetPreparedStatement;
 
 public class UserDAO {
     public User validateLogin(String username,String password) throws ClassNotFoundException, SQLException{
+
+//        CREATE OBJECTS FOR USER AND ROLE AND INITIALIZE THEM AS NULL
         User user =null;
-        Role role =null;
+        RoleBO roleBO = new RoleBO();
+
+//        OPEN UP A DATABASE CONNECTION
         Connection connection = DBConnection.getConnection();
 
-        //Fill your code here
+//        PREPARE A STATEMENT TO FETCH USER FROM DATABASE USING USERNAME AND PASSWORD
         PreparedStatement userPreparedStatement = GetPreparedStatement(connection, USER_GET_USER_FROM_USERNAME_PASSWORD_SQL);
 
+//        SET THE ATTRIBUTES IN THE QUERY -> REPLACING QUESTION MARKS(?) IN THE QUERY
         userPreparedStatement.setString(1,username);
         userPreparedStatement.setString(2,password);
 
+//        EXECUTE THE QUERY -> IT WILL RETURN A RESULT SET OF ONE USER!!
         ResultSet userQueryResultSet = userPreparedStatement.executeQuery();
 
+//        CHECK IF USER IS PRESENT OR NOT IF YES THEN PROCEED
         while(userQueryResultSet.next()) {
 
-            PreparedStatement rolesPreparedStatement = GetPreparedStatement(connection,ROLE_GET_ROLE_NAME_FROM_ROLE_ID_SQL);
+            // SINCE USER MODEL HAS ROLE OBJECT AS AN ATTRIBUTE WE NEED TO FETCH THE ROLE OF THAT USER
+            // TO DETERMINE IF HE/SHE IS THE RIGHT PERSON TO MAKE CHANGES OR NOT
+            Role role = roleBO.obtainRoleById(userQueryResultSet.getInt("role_id"));
 
-            rolesPreparedStatement.setLong(1,userQueryResultSet.getInt("role_id"));
-
-            System.out.println(rolesPreparedStatement);
-            ResultSet rolesQueryResultSet = rolesPreparedStatement.executeQuery();
-            if(rolesQueryResultSet.next()){
-                role = new Role(rolesQueryResultSet.getLong("id"),(rolesQueryResultSet.getString("name")));
-            }
-
+//            CALL A USER CONSTRUCTOR TO EMBED VALUES FROM DB AND RETURN THIS USER TO BO CLASS
             user = new User(userQueryResultSet.getLong("id"),
                     userQueryResultSet.getString("name"),
                     userQueryResultSet.getString("username"),
@@ -53,8 +55,11 @@ public class UserDAO {
                     role
                     );
         }
+
+//        AFTER GETTING THE DETAILS CLOSE THE CONNECTION
         connection.close();
-        System.out.println(role);
+
+//        AND RETURN THE USER
         return user;
     }
 

@@ -10,13 +10,13 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws Exception{
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Welcome to Best Buy Electronix!");
+        System.out.println("Welcome to Amey E-Mart!");
         int choice = 0;
         UserBO userBO=new UserBO();
         RoleBO roleBO = new RoleBO();
         ProductBO pbo=new ProductBO();
         do {
-            System.out.println("1.Login\n2.Exit\nChoose from the above menu");
+            System.out.println("Choose from the below Menu! \n1.Login\n2.Exit\n");
             choice = Integer.parseInt(br.readLine());
             switch(choice) {
                 case 1:
@@ -29,6 +29,7 @@ public class Main {
                         System.out.println("Invalid username or password");
                     }
                     else if(user.getRole().getName().equalsIgnoreCase("Store Manager")||user.getRole().getName().equalsIgnoreCase("Product Lead") ||user.getRole().getName().equalsIgnoreCase("Sales Lead")){
+                        System.out.println("Hey, "+ user.getName()+ " please choose appropriate Menu options");
                         int ch = 0;
                         do{
                             System.out.println("Menu\n1.Add Product Type\n2.Add Product Category\n3.Add Brand\n4.Add Product\n5.Edit Product\n6.Display Products\n7.Search Product\n8.Create Sales Order\n9.Display Sales Order\n10.Create Purchase Order\n11.Logout");
@@ -277,7 +278,7 @@ public class Main {
                         }while(ch!=11);
                     }
                     else{
-                        System.out.println("Sorry. You don't have permission to access.");
+                        System.out.println("Hey, "+user.getName()+"Sorry. You don't have permission to access.");
                     }
                     break;
                 case 2:
