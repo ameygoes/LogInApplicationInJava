@@ -1,12 +1,14 @@
 package bo;
 
-import java.sql.SQLException;
-
+import dao.PurchaseOrderDAO;
 import model.PurchaseOrder;
+
+import java.sql.SQLException;
 
 public class PurchaseOrderBO {
 	public Boolean addPurchaseOrder(PurchaseOrder purchaseOrder) throws ClassNotFoundException, SQLException {
-		//Fill your code here
-        return false;//To keep template code without errors we have given this dummy return stmt. Change it as per the problem spec
+
+		PurchaseOrderDAO purchaseOrderDAO = new PurchaseOrderDAO();
+        return purchaseOrderDAO.addPurchaseOrder(purchaseOrder);
 	}
 }

@@ -215,6 +215,9 @@ void displayProductType()	This method displays the details of all available prod
 Display Product Type Details using the below format.
 System.out.format("%-5s %-15s %-15s\n","Id","Name","Description");
  
+-----------------------------------------
+DONE
+_----------------------------------------
 
 Implement the following method present in the class ProductCategoryBO.
 Method	Description

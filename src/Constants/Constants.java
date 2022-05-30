@@ -18,7 +18,8 @@ public class Constants {
 
      //BRAND TABLE
      private static String BRAND_COLUMN_NAMES = "name";
-     private static String PRODCUT_TYPE_COLUMN_NAMES = "name,description";
+     private static String PRODUCT_TYPE_COLUMN_NAMES = "name,description";
+     private static String PRODUCT_CATEGORY_COLUMN_NAMES = "name,description";
 
 
      // USER TABLE QUERIES
@@ -34,10 +35,17 @@ public class Constants {
      public static String BRAND_GET_ALL_BRANDS_SQL = "SELECT * FROM %s;".formatted(BRAND_TABLE);
 
      // PRODUCT TYPE TABLE QUERIES
-     public static String PRODUCT_TYPE_INSERT_BRANDE_DETAILS_SQL = "INSERT INTO %s (%s) VALUES (?,?);".formatted(PRODUCT_TYPE_TABLE,PRODCUT_TYPE_COLUMN_NAMES);
+     public static String PRODUCT_TYPE_INSERT_BRANDE_DETAILS_SQL = "INSERT INTO %s (%s) VALUES (?,?);".formatted(PRODUCT_TYPE_TABLE, PRODUCT_TYPE_COLUMN_NAMES);
      public static String  PRODUCT_TYPE_GET_BRANDS_FROM_DB_USING_PRODUCT_TYPE_NAME_SQL = "SELECT * FROM %s WHERE name = ?;".formatted(PRODUCT_TYPE_TABLE);
      public static String  PRODUCT_TYPE_GET_BRANDS_FROM_DB_USING_ID_SQL = "SELECT * FROM %s WHERE id = ?;".formatted(PRODUCT_TYPE_TABLE);
      public static String  PRODUCT_TYPE_GET_ALL_BRANDS_SQL = "SELECT * FROM %s;".formatted(PRODUCT_TYPE_TABLE);
+
+     // PRODUCT CATEGORY TABLE QUERIES
+     public static String PRODUCT_CATEGORY_INSERT_BRANDE_DETAILS_SQL = "INSERT INTO %s (%s) VALUES (?,?);".formatted(PRODUCT_CATEGORY_TABLE, PRODUCT_CATEGORY_COLUMN_NAMES);
+     public static String  PRODUCT_CATEGORY_GET_BRANDS_FROM_DB_USING_PRODUCT_CATEGORY_NAME_SQL = "SELECT * FROM %s WHERE name = ?;".formatted(PRODUCT_CATEGORY_TABLE);
+     public static String  PRODUCT_CATEGORY_GET_BRANDS_FROM_DB_USING_ID_SQL = "SELECT * FROM %s WHERE id = ?;".formatted(PRODUCT_CATEGORY_TABLE);
+     public static String  PRODUCT_CATEGORY_GET_ALL_BRANDS_SQL = "SELECT * FROM %s;".formatted(PRODUCT_CATEGORY_TABLE);
+
 
 
 
